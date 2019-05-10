@@ -22,7 +22,7 @@ public class Main {
             printArray(sortedArray);
 
             System.out.println();
-            System.out.println("Time spent sorting the array: " + elapsedTime + "\n");
+            System.out.println("Time spent sorting the array: " + ((float)elapsedTime / 1000000) + " ms\n");
         }
     }
 
