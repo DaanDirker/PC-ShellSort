@@ -47,6 +47,7 @@ class ShellSort {
                 // so we decrement interval and go again
                 interval = (interval - 1) / 3;
             }
+            return array;
         }
         return array;
     }
