@@ -3,13 +3,27 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        int[] firstArray = generateRandomArray(30, 1, 80);
-        System.out.println("Generated array:");
-        printArray(firstArray);
+        int datasetAmount = 10;
 
-        System.out.println("\nAfter Sorting:");
-        firstArray = ShellSort.sort(firstArray);
-        printArray(firstArray);
+        for (int i = 0; i < datasetAmount; i++) {
+            System.out.println("Dataset number " + (i + 1) +":");
+
+            int[] array = generateRandomArray(10000, 1, 80);
+            System.out.println("Generated array:");
+            printArray(array);
+
+            int[] sortedArray = array;
+            long startTime = System.nanoTime();
+            sortedArray = ShellSort.sort(array);
+            long endTime = System.nanoTime();
+            long elapsedTime = endTime - startTime;
+
+            System.out.println("\nSorted array:");
+            printArray(sortedArray);
+
+            System.out.println();
+            System.out.println("Time spent sorting the array: " + elapsedTime + "\n");
+        }
     }
 
     public static int[] generateRandomArray(int arraySize, int min, int max) {
