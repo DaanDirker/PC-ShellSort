@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int datasetAmount = 10;
         ShellSort shellSort = new ShellSort();
         for (int i = 0; i < datasetAmount; i++) {
@@ -25,6 +25,13 @@ public class Main {
             System.out.println();
             System.out.println("Time spent sorting the array: " + timeInMillis + " ms\n");
         }
+
+        System.out.println("PARALLEL");
+
+        int[] array = generateRandomArray();
+        int[] sortedArray = ParallelShellSort.start(array);
+        printArray(sortedArray);
+
     }
 
     public static int[] generateRandomArray() {

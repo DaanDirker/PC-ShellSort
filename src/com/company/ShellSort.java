@@ -2,7 +2,6 @@ package com.company;
 
 class ShellSort {
 
-
     /* function to sort arr using shellSort */
     static int sort(int arr[])
     {

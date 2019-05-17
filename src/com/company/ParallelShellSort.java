@@ -6,7 +6,7 @@ import java.util.List;
 public class ParallelShellSort {
 
     private static final int CORES = 4;
-    private static int[] array;
+    private static volatile int[] array;
     private static int gap;
     private static int arraySize;
 
@@ -30,10 +30,11 @@ public class ParallelShellSort {
         }
     }
 
-    public static void start(int[] unsortedArray) throws InterruptedException {
+    public static int[] start(int[] unsortedArray) throws InterruptedException {
         array = unsortedArray;
         arraySize = array.length;
         sort();
+        return array;
     }
 
     static class Worker implements Runnable {
