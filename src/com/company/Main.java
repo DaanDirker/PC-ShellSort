@@ -1,38 +1,38 @@
 package com.company;
 
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 public class Main {
 
     public static void main(String[] args) {
         int datasetAmount = 10;
-
+        ShellSort shellSort = new ShellSort();
         for (int i = 0; i < datasetAmount; i++) {
             System.out.println("Dataset number " + (i + 1) +":");
 
-            int[] array = generateRandomArray(10000, 1, 80);
-            System.out.println("Generated array:");
-            printArray(array);
-
-            int[] sortedArray = array;
+            int[] array = generateRandomArray();
+//            System.out.println("Generated array:");
+//            printArray(array);
             long startTime = System.nanoTime();
-            sortedArray = ShellSort.sort(array);
+            shellSort.sort(array);
             long endTime = System.nanoTime();
-            long elapsedTime = endTime - startTime;
+            long timeInMillis = TimeUnit.MILLISECONDS.convert(endTime - startTime, TimeUnit.NANOSECONDS);
 
-            System.out.println("\nSorted array:");
-            printArray(sortedArray);
+//            System.out.println("\nSorted array:");
+//            printArray(array);
 
             System.out.println();
-            System.out.println("Time spent sorting the array: " + ((float)elapsedTime / 1000000) + " ms\n");
+            System.out.println("Time spent sorting the array: " + timeInMillis + " ms\n");
         }
     }
 
-    public static int[] generateRandomArray(int arraySize, int min, int max) {
-        int[] array = new int[arraySize];
-
-        for (int i = 0; i < arraySize; i++) {
-            array[i] = (int) (Math.random() * ((max - min) + 1)) + min;
+    public static int[] generateRandomArray() {
+        Random random = new Random();
+        int[] array = new int[100000];
+        for(int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt(100);
         }
-
         return array;
     }
 
